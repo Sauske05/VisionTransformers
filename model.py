@@ -1,6 +1,9 @@
 from torch import nn
 import torch
+from typing import Union
 import math
+from config import hyperparameters as hf
+
 class MultiHeadAttention(nn.Module):
     def __init__(self, number_of_heads:int, embedding_dim:int, 
                  dropout:float = 0.1) -> None:
@@ -47,3 +50,90 @@ class MultiHeadAttention(nn.Module):
         return torch.matmul(attention_scores, value)
     
 
+class LayerNorm(nn.Module):
+    def __init__(self, eps:float = 1e-05) -> None:
+        super().__init__()
+        self.eps = eps
+        self.gamma = nn.Parameter(torch.ones(hf['embedding_dim']))
+        self.beta = nn.Parameter(torch.zeros(hf['embedding_dim']))
+        
+
+
+    def forward(self,x) -> torch.tensor:
+        mean = torch.mean(x, dim=-1, keepdim=True)
+        var = torch.var(x, dim=-1, keepdim=True)
+
+        x = ((x-mean) * self.gamma / torch.sqrt(var + self.eps)) + self.beta
+
+
+        return x
+
+# class FeedForwardNetwork(nn.Module):
+#     def __init__(self, d_model:int, d_ff:int, dropout:float = 0.1):
+#         super().__init__()
+#         self.d_model = d_model
+#         self.d_ff = d_ff
+#         self.linear_layer1 = nn.Linear(d_model, d_ff)
+#         self.linear_layer2 = nn.Linear(d_ff, d_model)
+#         self.relu = nn.ReLU()
+#         self.dropout = nn.Dropout(dropout)
+#     def forward(self, x):
+#         x = self.relu(self.linear_layer1(x))
+#         x = self.dropout(x)
+#         return self.linear_layer2(x)
+        
+class MLP(nn.Module):
+    def __init__(self, d_model:int, d_ff:int,dropout:float = 0.1):
+        super().__init__()
+        self.fc1 = nn.Linear(d_model, d_ff)
+        self.fc2 = nn.Linear(d_ff, d_model)
+
+        self.norm1 = nn.LayerNorm(d_ff)
+        self.norm2 = nn.LayerNorm(d_model)
+        self.gelu = nn.GELU()
+        self.dropout = nn.Dropout(dropout)
+    def forward(self,x) -> torch.tensor:
+        print(f'This is the shape before error: {x.shape}')
+        x = self.dropout(self.norm1(self.gelu(self.fc1(x))))
+        
+        x = self.norm2(self.gelu(self.fc2(x)))
+        return x
+
+class ResidualConnection(nn.Module):
+    def __init__(self, dropout:float = 0.1):
+        super().__init__()
+        self.norm = LayerNorm()
+        self.dropout = nn.Dropout(dropout)
+
+
+    def forward(self, x:torch.tensor, sublayer:Union[MultiHeadAttention, MLP]):
+        return self.norm(x + self.dropout(sublayer(x)))
+    
+
+
+class EncoderBlock(nn.Module):
+    def __init__(self, attention_block:MultiHeadAttention, feedforward: MLP) -> None:
+        super().__init__()
+        self.attention_block = attention_block
+        self.blocks = nn.ModuleList([ResidualConnection() for _ in range(2)])
+        self.feedforward = feedforward 
+    def forward(self, x) -> torch.tensor:
+        x = self.blocks[0](
+            x, lambda x: self.attention_block(x,x,x)
+        )
+
+        x = self.blocks[1](
+            x, lambda x: self.feedforward(x)
+        )
+        return x
+    
+
+class ProjectionLayer(nn.Module):
+    def __init__(self, n_classes:int = hf['classes'], d_model:int = hf['embedding_dim']):
+        super().__init__()
+        self.fc1 = nn.Linear(d_model, n_classes)
+        
+    def forward(self,x):
+        x = torch.mean(x, dim=1, keepdim=True)
+        x = self.fc1(x)
+        return x
