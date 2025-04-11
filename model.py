@@ -2,6 +2,7 @@ from torch import nn
 import torch
 from typing import Union
 import math
+from embeddings import InputEmbeddings
 from config import hyperparameters as hf
 
 class MultiHeadAttention(nn.Module):
@@ -19,22 +20,22 @@ class MultiHeadAttention(nn.Module):
         self.dropout = nn.Dropout(dropout)
 
     def forward(self,q, k, v) -> torch.tensor:
-        print(f'Shape of q: {q.shape}')
+        #print(f'Shape of q: {q.shape}')
         
         query = self.query_weights(q) #Shape : (Batch, path_dim ** 2, embedding_dim)
         key = self.key_weights(k)
         value = self.value_weights(v)
         batch = query.shape[0]
-        print(f'Shape of q before reshape: {q.shape}')
+        #print(f'Shape of q before reshape: {q.shape}')
         #We need to reshape the query, key and value in the shape 
         # (Batch,patch_dim ** 2, n_heads, embeding_dim // n_heads)
         query = query.reshape(batch,-1, self.h, self.d_h)
         key = key.reshape(batch,-1, self.h, self.d_h)
         value = value.reshape(batch,-1, self.h, self.d_h)
-        print(f'Shape of query after reshape : {query.shape}')
+        #print(f'Shape of query after reshape : {query.shape}')
         x = self.attention_block(query=query, key=key, 
                                  value=value, dropout=self.dropout)
-        print(f'This is the shape after attention block :{x.shape}')
+        #print(f'This is the shape after attention block :{x.shape}')
         
 
         x = x.reshape(batch, -1, self.h * self.d_h)
@@ -43,7 +44,7 @@ class MultiHeadAttention(nn.Module):
     def attention_block(self, query, key, value, dropout:nn.Dropout) -> torch.tensor:
         attention_scores = torch.matmul(
             query, key.transpose(-2,-1)) / math.sqrt(self.d_h)
-        print(f'Attention Score shapes: {attention_scores.shape}')
+        #print(f'Attention Score shapes: {attention_scores.shape}')
         attention_scores = torch.softmax(attention_scores, dim = -1)
         if dropout is not None:
             attention_scores = dropout(attention_scores)
@@ -93,7 +94,7 @@ class MLP(nn.Module):
         self.gelu = nn.GELU()
         self.dropout = nn.Dropout(dropout)
     def forward(self,x) -> torch.tensor:
-        print(f'This is the shape before error: {x.shape}')
+        #print(f'This is the shape before error: {x.shape}')
         x = self.dropout(self.norm1(self.gelu(self.fc1(x))))
         
         x = self.norm2(self.gelu(self.fc2(x)))
@@ -142,10 +143,13 @@ class ProjectionLayer(nn.Module):
 class VisionTransformer(nn.Module):
     def __init__(self, encoderBlock:EncoderBlock, projection_layer:ProjectionLayer):
         super().__init__()
+        self.embeddings = InputEmbeddings(hf['in_channels'],hf['out_channels'],hf['patch_dim'], 
+                                          hf['embedding_dim'], hf['image_size'])
         self.encoderBlock = encoderBlock
         self.projection_layer = projection_layer
 
     def forward(self,x:torch.tensor) -> torch.tensor:
+        x= self.embeddings(x)
         x = self.encoderBlock(x)
         return self.projection_layer(x)
         
