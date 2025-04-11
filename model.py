@@ -137,3 +137,15 @@ class ProjectionLayer(nn.Module):
         x = torch.mean(x, dim=1, keepdim=True)
         x = self.fc1(x)
         return x
+    
+
+class VisionTransformer(nn.Module):
+    def __init__(self, encoderBlock:EncoderBlock, projection_layer:ProjectionLayer):
+        super().__init__()
+        self.encoderBlock = encoderBlock
+        self.projection_layer = projection_layer
+
+    def forward(self,x:torch.tensor) -> torch.tensor:
+        x = self.encoderBlock(x)
+        return self.projection_layer(x)
+        
