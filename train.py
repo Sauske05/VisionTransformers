@@ -5,10 +5,10 @@ from config import hyperparameters as hp
 from tqdm import tqdm
 from sklearn.metrics import accuracy_score
 from data_preprocess import load_dataloader
-from intialize_log import log
-logger = log()
-# import logging
-# logger = logging.getLogger(__name__)
+#from intialize_log import log
+#logger = log()
+import logging
+logger = logging.getLogger(__name__)
 def vit_model() -> nn.Module:
     multi_head = MultiHeadAttention(hp['number_of_heads'], hp['embedding_dim'])
     mlp_layer = MLP(hp['embedding_dim'], hp['d_ff'])
@@ -21,22 +21,31 @@ def accuracy(y_pred, y_actual) -> float:
     return accuracy_score(y_actual, y_pred)
 
 def train(model:nn.Module, criterion:nn.CrossEntropyLoss, 
-          optimizer:optim.Adam, train_dataloader, val_dataloader, device) -> None:
-    epoches:int = 10
+         optimizer:optim.Adam, train_dataloader, val_dataloader, device) -> None:
+    epoches:int = 30
     for epoch in tqdm(range(epoches)):
         train_epoch_loss:float = 0.0
         val_epoch_loss:float = 0.0
         model.train()
         train_epoch_accuracy, val_epoch_accuracy = 0.0, 0.0
 
-        for batch in tqdm(train_dataloader):
+        for index, batch in enumerate(tqdm(train_dataloader)):
             optimizer.zero_grad()
-            image_array = batch[0].permute(0,-1,1,2).to(device)
+            #print(f'This is the batch 0 shape : {batch[0].shape}')
+            #print(f'This is the batch label 0 shape : {batch[1].shape}')
+            image_array = batch[0].to(device)
+            #image_array = batch[0].permute(0,-1,1,2).to(device)
             y_pred = model(image_array).squeeze()
             #print(f'Shape of y_pred {y_pred.shape}')
             #print(f'Shape of batch[1] {batch[1].shape}')
             #print(batch[1])
-
+            if index == 0:
+                print(batch[0], batch[1])
+                print(batch[0].shape, batch[1].shape)
+            if index == len(train_dataloader) - 1:
+                print(batch[0], batch[1])
+                print(batch[0].shape, batch[1].shape)
+            
             #print(batch[1])
             loss = criterion(y_pred, batch[1].to(device))
             loss.backward()
@@ -50,7 +59,8 @@ def train(model:nn.Module, criterion:nn.CrossEntropyLoss,
         model.eval()
         with torch.no_grad():
             for batch in tqdm(val_dataloader):
-                image_array = batch[0].permute(0,-1,1,2).to(device)
+                #image_array = batch[0].permute(0,-1,1,2).to(device)
+                image_array = batch[0].to(device)
                 y_pred = model(image_array).squeeze()
                 val_loss = criterion(y_pred, batch[1].to(device))
                 val_epoch_loss += val_loss.item()
@@ -69,18 +79,18 @@ def train(model:nn.Module, criterion:nn.CrossEntropyLoss,
 
 
 if __name__ == "__main__":
-    # logging.basicConfig(filename='first_run.log', level=logging.INFO)
-    # formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    # file_handler = logging.FileHandler('first_run.log')
-    # file_handler.setFormatter(formatter)
-    # logger.addHandler(file_handler)
+    logging.basicConfig(filename='second_run.log', level=logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler = logging.FileHandler('second_run.log')
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
 
-    # stream_handler = logging.StreamHandler()
-    # stream_handler.setFormatter(formatter)
-    # stream_handler.setLevel(logging.INFO)
-    # logger.addHandler(stream_handler)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(formatter)
+    stream_handler.setLevel(logging.INFO)
+    logger.addHandler(stream_handler)
     
-    # logger.info("Testing console output")
+    logger.info("Testing console output")
     
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model = vit_model().to(device)
