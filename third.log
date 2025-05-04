@@ -1,0 +1,32 @@
+2025-05-02 19:10:11,559 - __main__ - INFO - Testing console output
+INFO:__main__:Testing console output
+2025-05-02 19:10:11,623 - __main__ - INFO - Started Training Loop
+INFO:__main__:Started Training Loop
+2025-05-02 19:22:08,537 - __main__ - INFO - Testing console output
+INFO:__main__:Testing console output
+2025-05-02 19:22:08,564 - __main__ - INFO - Started Training Loop
+INFO:__main__:Started Training Loop
+2025-05-02 19:22:08,962 - data_preprocess - INFO - Downlaoding data!
+INFO:data_preprocess:Downlaoding data!
+2025-05-02 19:22:38,021 - data_preprocess - INFO - Downlaoding data finished!
+INFO:data_preprocess:Downlaoding data finished!
+2025-05-02 19:22:38,021 - data_preprocess - INFO - Starting data preprocess!
+INFO:data_preprocess:Starting data preprocess!
+2025-05-02 19:22:51,936 - data_preprocess - INFO - Dropped 1821 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 1821 rows with mismatched shapes.
+2025-05-02 19:22:53,303 - data_preprocess - INFO - Dropped 168 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 168 rows with mismatched shapes.
+2025-05-02 19:22:53,304 - data_preprocess - INFO - Data preprocess finished!
+INFO:data_preprocess:Data preprocess finished!
+2025-05-02 19:22:53,304 - data_preprocess - INFO - Converting to dataset....
+INFO:data_preprocess:Converting to dataset....
+2025-05-02 19:22:53,307 - data_preprocess - INFO - Loaded to dataset
+INFO:data_preprocess:Loaded to dataset
+2025-05-02 19:22:53,307 - data_preprocess - INFO - Loading in Dataloaders...
+INFO:data_preprocess:Loading in Dataloaders...
+2025-05-02 19:22:53,307 - data_preprocess - INFO - Dataloaders loaded
+INFO:data_preprocess:Dataloaders loaded
+2025-05-03 09:53:29,079 - __main__ - INFO - Testing console output
+2025-05-03 09:53:29,110 - __main__ - INFO - Started Training Loop
+2025-05-03 10:00:31,480 - __main__ - INFO - Testing console output
+2025-05-03 10:00:31,511 - __main__ - INFO - Started Training Loop

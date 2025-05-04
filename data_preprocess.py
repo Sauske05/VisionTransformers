@@ -8,9 +8,9 @@ import logging
 
 from torchvision.transforms import v2
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='second_run.log', level=logging.INFO)
+logging.basicConfig(filename='distil.log', level=logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler = logging.FileHandler('second_run.log')
+file_handler = logging.FileHandler('distil.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
@@ -63,7 +63,8 @@ logger.addHandler(stream_handler)
 #         return image, label
 
 class TinyImageDataset(Dataset):
-    def __init__(self, df: pd.DataFrame, image_col: str = 'image_array', label_col: str = 'label'):
+    def __init__(self, df: pd.DataFrame, image_col: str = 'image_array', label_col: str = 'label', data_type = 'train'):
+        self.data_type = data_type
         self.images = df[image_col].tolist() 
         self.labels = df[label_col].values 
         self.transform_op = v2.Compose([
@@ -75,13 +76,19 @@ class TinyImageDataset(Dataset):
         self.num_augmentations = 5 
 
     def __len__(self):
-        return len(self.images) * self.num_augmentations
+        if self.data_type == 'train':
+            return len(self.images) * self.num_augmentations
+        else:
+            return len(self.images)
 
     def __getitem__(self, index):
-        orig_idx = index // self.num_augmentations
-        image = self.images[orig_idx]
-        label = self.labels[orig_idx]
-
+        if self.data_type == 'train':
+            orig_idx = index // self.num_augmentations
+            image = self.images[orig_idx]
+            label = self.labels[orig_idx]
+        else:
+            image = self.images[index]
+            label = self.labels[index]
        
         image = torch.tensor(image, dtype=torch.float32)
         if image.shape == (64, 64, 3):
@@ -93,7 +100,8 @@ class TinyImageDataset(Dataset):
 
         image = image / 255.0
 
-        image = self.transform_op(image)
+        if self.data_type == 'train':
+            image = self.transform_op(image)
 
         mean = torch.tensor([0.485, 0.456, 0.406]).view(3, 1, 1)
         std = torch.tensor([0.229, 0.224, 0.225]).view(3, 1, 1)
@@ -155,12 +163,12 @@ def load_dataloader():
     clean_df(val_df)
     logger.info('Data preprocess finished!')
     logger.info('Converting to dataset....')
-    train_dataset = TinyImageDataset(train_df)
-    val_dataset = TinyImageDataset(val_df)
+    train_dataset = TinyImageDataset(train_df, data_type = 'train')
+    val_dataset = TinyImageDataset(val_df, data_type = 'test')
     logger.info('Loaded to dataset')
     logger.info('Loading in Dataloaders...')
 
-    train_dataloader = DataLoader(train_dataset, batch_size=8, shuffle=True, drop_last=True)
-    val_dataloader = DataLoader(val_dataset, batch_size=8, shuffle=True, drop_last=True)
+    train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True, drop_last=True)
+    val_dataloader = DataLoader(val_dataset, batch_size=32, shuffle=True, drop_last=True)
     logger.info('Dataloaders loaded')
     return train_dataloader, val_dataloader

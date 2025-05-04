@@ -1,0 +1,76 @@
+2025-05-03 09:01:48,119 - __main__ - INFO - Testing console output
+INFO:__main__:Testing console output
+2025-05-03 09:01:48,244 - data_preprocess - INFO - Downlaoding data!
+INFO:data_preprocess:Downlaoding data!
+2025-05-03 09:02:24,086 - data_preprocess - INFO - Downlaoding data finished!
+INFO:data_preprocess:Downlaoding data finished!
+2025-05-03 09:02:24,087 - data_preprocess - INFO - Starting data preprocess!
+INFO:data_preprocess:Starting data preprocess!
+2025-05-03 09:02:37,513 - data_preprocess - INFO - Dropped 1821 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 1821 rows with mismatched shapes.
+2025-05-03 09:02:38,922 - data_preprocess - INFO - Dropped 168 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 168 rows with mismatched shapes.
+2025-05-03 09:02:38,923 - data_preprocess - INFO - Data preprocess finished!
+INFO:data_preprocess:Data preprocess finished!
+2025-05-03 09:02:38,924 - data_preprocess - INFO - Converting to dataset....
+INFO:data_preprocess:Converting to dataset....
+2025-05-03 09:02:38,926 - data_preprocess - INFO - Loaded to dataset
+INFO:data_preprocess:Loaded to dataset
+2025-05-03 09:02:38,927 - data_preprocess - INFO - Loading in Dataloaders...
+INFO:data_preprocess:Loading in Dataloaders...
+2025-05-03 09:02:38,927 - data_preprocess - INFO - Dataloaders loaded
+INFO:data_preprocess:Dataloaders loaded
+2025-05-03 09:02:38,954 - __main__ - INFO - Started Training Loop
+INFO:__main__:Started Training Loop
+2025-05-03 09:35:25,553 - __main__ - INFO - Average Train Loss in Epoch 0 --> 4.512765435274142
+INFO:__main__:Average Train Loss in Epoch 0 --> 4.512765435274142
+2025-05-03 09:35:25,554 - __main__ - INFO - Train accuracy in Epoch 0 --> 7.509982073011734 %
+INFO:__main__:Train accuracy in Epoch 0 --> 7.509982073011734 %
+2025-05-03 09:35:25,554 - __main__ - INFO - Average Val Loss in Epoch 0 --> 4.133212686749934
+INFO:__main__:Average Val Loss in Epoch 0 --> 4.133212686749934
+2025-05-03 09:35:25,555 - __main__ - INFO - Val accuracy in Epoch 0 --> 12.408387622149837 %
+INFO:__main__:Val accuracy in Epoch 0 --> 12.408387622149837 %
+INFO:__main__:Testing console output
+INFO:__main__:Started Training Loop
+2025-05-03 09:53:29,436 - data_preprocess - INFO - Downlaoding data!
+INFO:data_preprocess:Downlaoding data!
+2025-05-03 09:54:15,891 - data_preprocess - INFO - Downlaoding data finished!
+INFO:data_preprocess:Downlaoding data finished!
+2025-05-03 09:54:15,892 - data_preprocess - INFO - Starting data preprocess!
+INFO:data_preprocess:Starting data preprocess!
+2025-05-03 09:54:31,276 - data_preprocess - INFO - Dropped 1821 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 1821 rows with mismatched shapes.
+2025-05-03 09:54:32,678 - data_preprocess - INFO - Dropped 168 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 168 rows with mismatched shapes.
+2025-05-03 09:54:32,679 - data_preprocess - INFO - Data preprocess finished!
+INFO:data_preprocess:Data preprocess finished!
+2025-05-03 09:54:32,679 - data_preprocess - INFO - Converting to dataset....
+INFO:data_preprocess:Converting to dataset....
+2025-05-03 09:54:32,681 - data_preprocess - INFO - Loaded to dataset
+INFO:data_preprocess:Loaded to dataset
+2025-05-03 09:54:32,681 - data_preprocess - INFO - Loading in Dataloaders...
+INFO:data_preprocess:Loading in Dataloaders...
+2025-05-03 09:54:32,682 - data_preprocess - INFO - Dataloaders loaded
+INFO:data_preprocess:Dataloaders loaded
+INFO:__main__:Testing console output
+INFO:__main__:Started Training Loop
+2025-05-03 10:00:31,869 - data_preprocess - INFO - Downlaoding data!
+INFO:data_preprocess:Downlaoding data!
+2025-05-03 10:01:11,532 - data_preprocess - INFO - Downlaoding data finished!
+INFO:data_preprocess:Downlaoding data finished!
+2025-05-03 10:01:11,532 - data_preprocess - INFO - Starting data preprocess!
+INFO:data_preprocess:Starting data preprocess!
+2025-05-03 10:01:24,607 - data_preprocess - INFO - Dropped 1821 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 1821 rows with mismatched shapes.
+2025-05-03 10:01:25,924 - data_preprocess - INFO - Dropped 168 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 168 rows with mismatched shapes.
+2025-05-03 10:01:25,926 - data_preprocess - INFO - Data preprocess finished!
+INFO:data_preprocess:Data preprocess finished!
+2025-05-03 10:01:25,926 - data_preprocess - INFO - Converting to dataset....
+INFO:data_preprocess:Converting to dataset....
+2025-05-03 10:01:25,928 - data_preprocess - INFO - Loaded to dataset
+INFO:data_preprocess:Loaded to dataset
+2025-05-03 10:01:25,929 - data_preprocess - INFO - Loading in Dataloaders...
+INFO:data_preprocess:Loading in Dataloaders...
+2025-05-03 10:01:25,929 - data_preprocess - INFO - Dataloaders loaded
+INFO:data_preprocess:Dataloaders loaded

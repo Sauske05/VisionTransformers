@@ -5,16 +5,34 @@ from config import hyperparameters as hp
 from tqdm import tqdm
 from sklearn.metrics import accuracy_score
 from data_preprocess import load_dataloader
+#from distil_train import efficient_net_output
 #from intialize_log import log
 #logger = log()
 import logging
 logger = logging.getLogger(__name__)
+
 def vit_model() -> nn.Module:
-    multi_head = MultiHeadAttention(hp['number_of_heads'], hp['embedding_dim'])
-    mlp_layer = MLP(hp['embedding_dim'], hp['d_ff'])
-    encoder_layer  = EncoderBlock(multi_head, mlp_layer)
+    
+    #sample_data:torch.tensor = torch.randn(1,3,256,256).to('cuda')
+    #attention_map = efficient_net_output(sample_data)
+    
+    multi_head1 = MultiHeadAttention(hp['number_of_heads'], hp['embedding_dim'])
+    mlp_layer1 = MLP(hp['embedding_dim'], hp['d_ff'])
+    encoder_layer1  = EncoderBlock(multi_head1, mlp_layer1)
+    
+    
+    multi_head2 = MultiHeadAttention(hp['number_of_heads'], hp['embedding_dim'])
+    mlp_layer2 = MLP(hp['embedding_dim'], hp['d_ff'])
+    encoder_layer2  = EncoderBlock(multi_head2, mlp_layer2)
+    
+    
+    multi_head3 = MultiHeadAttention(hp['number_of_heads'], hp['embedding_dim'])
+    mlp_layer3 = MLP(hp['embedding_dim'], hp['d_ff'])
+    encoder_layer3  = EncoderBlock(multi_head3, mlp_layer3)
+    
+    
     projection = ProjectionLayer()
-    model = VisionTransformer(encoder_layer, projection)
+    model = VisionTransformer(encoder_layer1, encoder_layer2, encoder_layer3, projection)
     return model
 
 def accuracy(y_pred, y_actual) -> float:
@@ -22,7 +40,7 @@ def accuracy(y_pred, y_actual) -> float:
 
 def train(model:nn.Module, criterion:nn.CrossEntropyLoss, 
          optimizer:optim.Adam, train_dataloader, val_dataloader, device) -> None:
-    epoches:int = 30
+    epoches:int = 15
     for epoch in tqdm(range(epoches)):
         train_epoch_loss:float = 0.0
         val_epoch_loss:float = 0.0
@@ -35,16 +53,17 @@ def train(model:nn.Module, criterion:nn.CrossEntropyLoss,
             #print(f'This is the batch label 0 shape : {batch[1].shape}')
             image_array = batch[0].to(device)
             #image_array = batch[0].permute(0,-1,1,2).to(device)
-            y_pred = model(image_array).squeeze()
+            y_pred, _ = model(image_array)
+            y_pred = y_pred.squeeze()
             #print(f'Shape of y_pred {y_pred.shape}')
             #print(f'Shape of batch[1] {batch[1].shape}')
             #print(batch[1])
-            if index == 0:
-                print(batch[0], batch[1])
-                print(batch[0].shape, batch[1].shape)
-            if index == len(train_dataloader) - 1:
-                print(batch[0], batch[1])
-                print(batch[0].shape, batch[1].shape)
+            # if index == 0:
+            #     print(batch[0], batch[1])
+            #     print(batch[0].shape, batch[1].shape)
+            # if index == len(train_dataloader) - 1:
+            #     print(batch[0], batch[1])
+            #     print(batch[0].shape, batch[1].shape)
             
             #print(batch[1])
             loss = criterion(y_pred, batch[1].to(device))
@@ -61,7 +80,8 @@ def train(model:nn.Module, criterion:nn.CrossEntropyLoss,
             for batch in tqdm(val_dataloader):
                 #image_array = batch[0].permute(0,-1,1,2).to(device)
                 image_array = batch[0].to(device)
-                y_pred = model(image_array).squeeze()
+                y_pred, _ = model(image_array)
+                y_pred = y_pred.squeeze()
                 val_loss = criterion(y_pred, batch[1].to(device))
                 val_epoch_loss += val_loss.item()
                 y_logits = torch.argmax(y_pred.detach().cpu(), dim=1).squeeze().numpy()
@@ -79,9 +99,9 @@ def train(model:nn.Module, criterion:nn.CrossEntropyLoss,
 
 
 if __name__ == "__main__":
-    logging.basicConfig(filename='second_run.log', level=logging.INFO)
+    logging.basicConfig(filename='after_cls_token.log', level=logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    file_handler = logging.FileHandler('second_run.log')
+    file_handler = logging.FileHandler('after_cls_token.log')
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
 
@@ -99,6 +119,10 @@ if __name__ == "__main__":
     train_dataloader, val_dataloader = load_dataloader()
     #print('Started Training Loop!')
     logger.info('Started Training Loop')
+    #print(model)
+    #sample_data = torch.randn(1,3,64,64).to(device)
+    #y_pred = model(sample_data)
+
     train(model, loss, optimizer, train_dataloader, val_dataloader, device)
     logger.info('Training Loop Finished')
     #print('Training Loop Finished')

@@ -1,0 +1,170 @@
+2025-05-02 20:13:34,112 - __main__ - INFO - Testing console output
+INFO:__main__:Testing console output
+2025-05-02 20:13:34,225 - data_preprocess - INFO - Downlaoding data!
+INFO:data_preprocess:Downlaoding data!
+2025-05-02 20:14:12,139 - data_preprocess - INFO - Downlaoding data finished!
+INFO:data_preprocess:Downlaoding data finished!
+2025-05-02 20:14:12,139 - data_preprocess - INFO - Starting data preprocess!
+INFO:data_preprocess:Starting data preprocess!
+2025-05-02 20:14:25,292 - data_preprocess - INFO - Dropped 1821 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 1821 rows with mismatched shapes.
+2025-05-02 20:14:26,636 - data_preprocess - INFO - Dropped 168 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 168 rows with mismatched shapes.
+2025-05-02 20:14:26,637 - data_preprocess - INFO - Data preprocess finished!
+INFO:data_preprocess:Data preprocess finished!
+2025-05-02 20:14:26,637 - data_preprocess - INFO - Converting to dataset....
+INFO:data_preprocess:Converting to dataset....
+2025-05-02 20:14:26,640 - data_preprocess - INFO - Loaded to dataset
+INFO:data_preprocess:Loaded to dataset
+2025-05-02 20:14:26,641 - data_preprocess - INFO - Loading in Dataloaders...
+INFO:data_preprocess:Loading in Dataloaders...
+2025-05-02 20:14:26,643 - data_preprocess - INFO - Dataloaders loaded
+INFO:data_preprocess:Dataloaders loaded
+2025-05-02 20:14:26,662 - __main__ - INFO - Started Training Loop
+INFO:__main__:Started Training Loop
+2025-05-02 21:01:59,610 - __main__ - INFO - Testing console output
+INFO:__main__:Testing console output
+2025-05-02 21:01:59,745 - data_preprocess - INFO - Downlaoding data!
+INFO:data_preprocess:Downlaoding data!
+2025-05-02 21:02:28,677 - data_preprocess - INFO - Downlaoding data finished!
+INFO:data_preprocess:Downlaoding data finished!
+2025-05-02 21:02:28,678 - data_preprocess - INFO - Starting data preprocess!
+INFO:data_preprocess:Starting data preprocess!
+2025-05-02 21:02:43,185 - data_preprocess - INFO - Dropped 1821 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 1821 rows with mismatched shapes.
+2025-05-02 21:02:44,726 - data_preprocess - INFO - Dropped 168 rows with mismatched shapes.
+INFO:data_preprocess:Dropped 168 rows with mismatched shapes.
+2025-05-02 21:02:44,728 - data_preprocess - INFO - Data preprocess finished!
+INFO:data_preprocess:Data preprocess finished!
+2025-05-02 21:02:44,728 - data_preprocess - INFO - Converting to dataset....
+INFO:data_preprocess:Converting to dataset....
+2025-05-02 21:02:44,731 - data_preprocess - INFO - Loaded to dataset
+INFO:data_preprocess:Loaded to dataset
+2025-05-02 21:02:44,731 - data_preprocess - INFO - Loading in Dataloaders...
+INFO:data_preprocess:Loading in Dataloaders...
+2025-05-02 21:02:44,732 - data_preprocess - INFO - Dataloaders loaded
+INFO:data_preprocess:Dataloaders loaded
+2025-05-02 21:02:44,761 - __main__ - INFO - Started Training Loop
+INFO:__main__:Started Training Loop
+2025-05-02 21:49:00,334 - __main__ - INFO - Average Train Loss in Epoch 0 --> 4.49490745950267
+INFO:__main__:Average Train Loss in Epoch 0 --> 4.49490745950267
+2025-05-02 21:49:00,335 - __main__ - INFO - Train accuracy in Epoch 0 --> 7.642272779126808 %
+INFO:__main__:Train accuracy in Epoch 0 --> 7.642272779126808 %
+2025-05-02 21:49:00,335 - __main__ - INFO - Average Val Loss in Epoch 0 --> 4.06455836730628
+INFO:__main__:Average Val Loss in Epoch 0 --> 4.06455836730628
+2025-05-02 21:49:00,335 - __main__ - INFO - Val accuracy in Epoch 0 --> 12.530512611879576 %
+INFO:__main__:Val accuracy in Epoch 0 --> 12.530512611879576 %
+2025-05-02 22:35:19,731 - __main__ - INFO - Average Train Loss in Epoch 1 --> 3.9733636658571023
+INFO:__main__:Average Train Loss in Epoch 1 --> 3.9733636658571023
+2025-05-02 22:35:19,731 - __main__ - INFO - Train accuracy in Epoch 1 --> 14.177164648555271 %
+INFO:__main__:Train accuracy in Epoch 1 --> 14.177164648555271 %
+2025-05-02 22:35:19,731 - __main__ - INFO - Average Val Loss in Epoch 1 --> 3.721743239339917
+INFO:__main__:Average Val Loss in Epoch 1 --> 3.721743239339917
+2025-05-02 22:35:19,731 - __main__ - INFO - Val accuracy in Epoch 1 --> 17.371847030105776 %
+INFO:__main__:Val accuracy in Epoch 1 --> 17.371847030105776 %
+2025-05-02 23:21:42,841 - __main__ - INFO - Average Train Loss in Epoch 2 --> 3.739168901673193
+INFO:__main__:Average Train Loss in Epoch 2 --> 3.739168901673193
+2025-05-02 23:21:42,841 - __main__ - INFO - Train accuracy in Epoch 2 --> 17.608904678867685 %
+INFO:__main__:Train accuracy in Epoch 2 --> 17.608904678867685 %
+2025-05-02 23:21:42,842 - __main__ - INFO - Average Val Loss in Epoch 2 --> 3.5816660247458203
+INFO:__main__:Average Val Loss in Epoch 2 --> 3.5816660247458203
+2025-05-02 23:21:42,842 - __main__ - INFO - Val accuracy in Epoch 2 --> 19.467046379170057 %
+INFO:__main__:Val accuracy in Epoch 2 --> 19.467046379170057 %
+2025-05-03 00:08:11,988 - __main__ - INFO - Average Train Loss in Epoch 3 --> 3.575580120550988
+INFO:__main__:Average Train Loss in Epoch 3 --> 3.575580120550988
+2025-05-03 00:08:11,989 - __main__ - INFO - Train accuracy in Epoch 3 --> 20.221109499519237 %
+INFO:__main__:Train accuracy in Epoch 3 --> 20.221109499519237 %
+2025-05-03 00:08:11,990 - __main__ - INFO - Average Val Loss in Epoch 3 --> 3.4903703524486334
+INFO:__main__:Average Val Loss in Epoch 3 --> 3.4903703524486334
+2025-05-03 00:08:11,990 - __main__ - INFO - Val accuracy in Epoch 3 --> 22.172497965825873 %
+INFO:__main__:Val accuracy in Epoch 3 --> 22.172497965825873 %
+2025-05-03 00:55:06,616 - __main__ - INFO - Average Train Loss in Epoch 4 --> 3.461285750349669
+INFO:__main__:Average Train Loss in Epoch 4 --> 3.461285750349669
+2025-05-03 00:55:06,616 - __main__ - INFO - Train accuracy in Epoch 4 --> 22.126432098564237 %
+INFO:__main__:Train accuracy in Epoch 4 --> 22.126432098564237 %
+2025-05-03 00:55:06,617 - __main__ - INFO - Average Val Loss in Epoch 4 --> 3.423956406223182
+INFO:__main__:Average Val Loss in Epoch 4 --> 3.423956406223182
+2025-05-03 00:55:06,617 - __main__ - INFO - Val accuracy in Epoch 4 --> 23.13873067534581 %
+INFO:__main__:Val accuracy in Epoch 4 --> 23.13873067534581 %
+2025-05-03 01:42:02,512 - __main__ - INFO - Average Train Loss in Epoch 5 --> 3.3750804715489076
+INFO:__main__:Average Train Loss in Epoch 5 --> 3.3750804715489076
+2025-05-03 01:42:02,513 - __main__ - INFO - Train accuracy in Epoch 5 --> 23.56240119945894 %
+INFO:__main__:Train accuracy in Epoch 5 --> 23.56240119945894 %
+2025-05-03 01:42:02,513 - __main__ - INFO - Average Val Loss in Epoch 5 --> 3.375661718350683
+INFO:__main__:Average Val Loss in Epoch 5 --> 3.375661718350683
+2025-05-03 01:42:02,514 - __main__ - INFO - Val accuracy in Epoch 5 --> 24.318551668022785 %
+INFO:__main__:Val accuracy in Epoch 5 --> 24.318551668022785 %
+2025-05-03 02:28:55,530 - __main__ - INFO - Average Train Loss in Epoch 6 --> 3.295165898698446
+INFO:__main__:Average Train Loss in Epoch 6 --> 3.295165898698446
+2025-05-03 02:28:55,531 - __main__ - INFO - Train accuracy in Epoch 6 --> 24.943367937289157 %
+INFO:__main__:Train accuracy in Epoch 6 --> 24.943367937289157 %
+2025-05-03 02:28:55,531 - __main__ - INFO - Average Val Loss in Epoch 6 --> 3.287763553484365
+INFO:__main__:Average Val Loss in Epoch 6 --> 3.287763553484365
+2025-05-03 02:28:55,531 - __main__ - INFO - Val accuracy in Epoch 6 --> 26.20016273393003 %
+INFO:__main__:Val accuracy in Epoch 6 --> 26.20016273393003 %
+2025-05-03 03:16:00,068 - __main__ - INFO - Average Train Loss in Epoch 7 --> 3.2382730379212785
+INFO:__main__:Average Train Loss in Epoch 7 --> 3.2382730379212785
+2025-05-03 03:16:00,069 - __main__ - INFO - Train accuracy in Epoch 7 --> 25.997579896025165 %
+INFO:__main__:Train accuracy in Epoch 7 --> 25.997579896025165 %
+2025-05-03 03:16:00,069 - __main__ - INFO - Average Val Loss in Epoch 7 --> 3.247875336518222
+INFO:__main__:Average Val Loss in Epoch 7 --> 3.247875336518222
+2025-05-03 03:16:00,069 - __main__ - INFO - Val accuracy in Epoch 7 --> 26.240846216436125 %
+INFO:__main__:Val accuracy in Epoch 7 --> 26.240846216436125 %
+2025-05-03 04:02:54,114 - __main__ - INFO - Average Train Loss in Epoch 8 --> 3.1864691216875203
+INFO:__main__:Average Train Loss in Epoch 8 --> 3.1864691216875203
+2025-05-03 04:02:54,114 - __main__ - INFO - Train accuracy in Epoch 8 --> 26.831171265135833 %
+INFO:__main__:Train accuracy in Epoch 8 --> 26.831171265135833 %
+2025-05-03 04:02:54,115 - __main__ - INFO - Average Val Loss in Epoch 8 --> 3.2552432144823067
+INFO:__main__:Average Val Loss in Epoch 8 --> 3.2552432144823067
+2025-05-03 04:02:54,115 - __main__ - INFO - Val accuracy in Epoch 8 --> 26.749389747762407 %
+INFO:__main__:Val accuracy in Epoch 8 --> 26.749389747762407 %
+2025-05-03 04:49:39,924 - __main__ - INFO - Average Train Loss in Epoch 9 --> 3.146032228241925
+INFO:__main__:Average Train Loss in Epoch 9 --> 3.146032228241925
+2025-05-03 04:49:39,924 - __main__ - INFO - Train accuracy in Epoch 9 --> 27.44882743110445 %
+INFO:__main__:Train accuracy in Epoch 9 --> 27.44882743110445 %
+2025-05-03 04:49:39,925 - __main__ - INFO - Average Val Loss in Epoch 9 --> 3.2047360682506887
+INFO:__main__:Average Val Loss in Epoch 9 --> 3.2047360682506887
+2025-05-03 04:49:39,925 - __main__ - INFO - Val accuracy in Epoch 9 --> 28.213995117982098 %
+INFO:__main__:Val accuracy in Epoch 9 --> 28.213995117982098 %
+2025-05-03 05:36:30,670 - __main__ - INFO - Average Train Loss in Epoch 10 --> 3.1055382755654755
+INFO:__main__:Average Train Loss in Epoch 10 --> 3.1055382755654755
+2025-05-03 05:36:30,670 - __main__ - INFO - Train accuracy in Epoch 10 --> 28.23189811117811 %
+INFO:__main__:Train accuracy in Epoch 10 --> 28.23189811117811 %
+2025-05-03 05:36:30,671 - __main__ - INFO - Average Val Loss in Epoch 10 --> 3.185570062322283
+INFO:__main__:Average Val Loss in Epoch 10 --> 3.185570062322283
+2025-05-03 05:36:30,671 - __main__ - INFO - Val accuracy in Epoch 10 --> 28.224165988608625 %
+INFO:__main__:Val accuracy in Epoch 10 --> 28.224165988608625 %
+2025-05-03 06:23:13,697 - __main__ - INFO - Average Train Loss in Epoch 11 --> 3.074901078253277
+INFO:__main__:Average Train Loss in Epoch 11 --> 3.074901078253277
+2025-05-03 06:23:13,697 - __main__ - INFO - Train accuracy in Epoch 11 --> 28.778051205162893 %
+INFO:__main__:Train accuracy in Epoch 11 --> 28.778051205162893 %
+2025-05-03 06:23:13,697 - __main__ - INFO - Average Val Loss in Epoch 11 --> 3.199456200791724
+INFO:__main__:Average Val Loss in Epoch 11 --> 3.199456200791724
+2025-05-03 06:23:13,697 - __main__ - INFO - Val accuracy in Epoch 11 --> 28.478437754271766 %
+INFO:__main__:Val accuracy in Epoch 11 --> 28.478437754271766 %
+2025-05-03 07:09:45,888 - __main__ - INFO - Average Train Loss in Epoch 12 --> 3.044374908706561
+INFO:__main__:Average Train Loss in Epoch 12 --> 3.044374908706561
+2025-05-03 07:09:45,889 - __main__ - INFO - Train accuracy in Epoch 12 --> 29.319926337575986 %
+INFO:__main__:Train accuracy in Epoch 12 --> 29.319926337575986 %
+2025-05-03 07:09:45,889 - __main__ - INFO - Average Val Loss in Epoch 12 --> 3.16472807058578
+INFO:__main__:Average Val Loss in Epoch 12 --> 3.16472807058578
+2025-05-03 07:09:45,889 - __main__ - INFO - Val accuracy in Epoch 12 --> 29.15988608624898 %
+INFO:__main__:Val accuracy in Epoch 12 --> 29.15988608624898 %
+2025-05-03 07:57:07,714 - __main__ - INFO - Average Train Loss in Epoch 13 --> 3.0189802042129825
+INFO:__main__:Average Train Loss in Epoch 13 --> 3.0189802042129825
+2025-05-03 07:57:07,715 - __main__ - INFO - Train accuracy in Epoch 13 --> 29.691294144489174 %
+INFO:__main__:Train accuracy in Epoch 13 --> 29.691294144489174 %
+2025-05-03 07:57:07,715 - __main__ - INFO - Average Val Loss in Epoch 13 --> 3.147144288139871
+INFO:__main__:Average Val Loss in Epoch 13 --> 3.147144288139871
+2025-05-03 07:57:07,715 - __main__ - INFO - Val accuracy in Epoch 13 --> 29.353132628152974 %
+INFO:__main__:Val accuracy in Epoch 13 --> 29.353132628152974 %
+2025-05-03 08:44:19,817 - __main__ - INFO - Average Train Loss in Epoch 14 --> 2.9955702275652163
+INFO:__main__:Average Train Loss in Epoch 14 --> 2.9955702275652163
+2025-05-03 08:44:19,817 - __main__ - INFO - Train accuracy in Epoch 14 --> 30.2392806505761 %
+INFO:__main__:Train accuracy in Epoch 14 --> 30.2392806505761 %
+2025-05-03 08:44:19,817 - __main__ - INFO - Average Val Loss in Epoch 14 --> 3.1694177480807046
+INFO:__main__:Average Val Loss in Epoch 14 --> 3.1694177480807046
+2025-05-03 08:44:19,818 - __main__ - INFO - Val accuracy in Epoch 14 --> 29.119202603742885 %
+INFO:__main__:Val accuracy in Epoch 14 --> 29.119202603742885 %
+2025-05-03 08:44:19,820 - __main__ - INFO - Training Loop Finished
+INFO:__main__:Training Loop Finished

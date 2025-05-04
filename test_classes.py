@@ -15,7 +15,7 @@ def test_multihead() ->None:
     x = torch.randn(1,64,64)
     multi_attention_layer = MultiHeadAttention(hp['number_of_heads'], hp['embedding_dim'])
     x = multi_attention_layer(x,x,x)
-    print(f'Shape of x after MultiHead block: {x.shape}')
+    print(f'Shape of x after MultiHead block: {x[0].shape}')
 
 
 def test_encoderBlock() -> torch.tensor:
@@ -38,6 +38,6 @@ def test_MLP() -> None:
     print(f'Shape of x after MLP layer: {x.shape}')
 if __name__ == "__main__":
     #test_inputEmbeddings()
-    #test_multihead()
+    test_multihead()
     #test_encoderBlock()
-    test_MLP()
+    #test_MLP()
