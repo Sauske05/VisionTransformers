@@ -237,7 +237,6 @@ class AttentionAugmentationModule(nn.Module):
     Implements the Attention Augmentation Module based on the AAL paper.
     It extracts CNN activation maps (B_c) and computes augmented attention maps (A_c+)
     from ViT's internal attention maps (A_(m,n)).
-    Uses the hook registration style requested by the user.
     """
     def __init__(self, cnn_teacher_model: nn.Module, vit_num_heads: int, vit_num_blocks: int, cnn_feature_layer_names: list):
         """
@@ -327,11 +326,8 @@ class AttentionAugmentationModule(nn.Module):
     def hook(self, layer_name: str):
         """ Returns a closure that acts as the hook function. """
         def fn(module, input, output):
-            # Store the detached output tensor in the self.output dictionary
-            # Using the layer_name as the key.
             self.output[layer_name] = output.detach()
         return fn
-    # --- End Hook Method ---
 
     def _get_and_process_cnn_maps(self, target_P: int) -> torch.Tensor | None:
         """ 
@@ -471,9 +467,3 @@ class AttentionAugmentationModule(nn.Module):
         #print(f'The shape of processed_cnn_maps: {processed_cnn_maps.shape}')
         #print(f'Shape of augemented_attention_maps: {augmented_attention_maps.shape}')
         return augmented_attention_maps, processed_cnn_maps
-
-    def __del__(self):
-        # Ensure hooks are removed when the object is garbage collected
-        for handle in self._hook_handles:
-            handle.remove()
-        self._hook_handles = []

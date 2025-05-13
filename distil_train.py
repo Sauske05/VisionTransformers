@@ -34,7 +34,6 @@ def accuracy(y_pred, y_actual) -> float:
 
 
 def compute_mse_l2_loss(augmented_maps: torch.Tensor, cnn_maps: torch.Tensor) -> torch.Tensor:
-    # Ensure maps have the same shape
     assert augmented_maps.shape == cnn_maps.shape, \
         f"Shape mismatch: AugMaps {augmented_maps.shape}, CNNMaps {cnn_maps.shape}"
         
@@ -62,7 +61,6 @@ def compute_mse_l2_loss(augmented_maps: torch.Tensor, cnn_maps: torch.Tensor) ->
     # Compute Mean Squared Error (MSE) loss
     # mse_loss = F.mse_loss(aug_normalized, cnn_normalized, reduction='mean') 
     # Paper uses || A/||A|| - B/||B|| ||_2 which implies sum of squares, then maybe mean over batch/channels?
-    # Let's use MSE which averages over all elements.
     mse_loss = F.mse_loss(aug_normalized_flat, cnn_normalized_flat, reduction='mean')
     
     return mse_loss
