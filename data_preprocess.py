@@ -8,9 +8,9 @@ import logging
 
 from torchvision.transforms import v2
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='distil.log', level=logging.INFO)
+logging.basicConfig(filename='distil_final.log', level=logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler = logging.FileHandler('distil.log')
+file_handler = logging.FileHandler('distil_final.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
